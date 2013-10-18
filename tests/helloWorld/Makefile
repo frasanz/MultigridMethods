@@ -1,12 +1,11 @@
 CXX=g++
 CC=g++
 ROOT=../../
-APP=helloworld.x
 
 
-all: $(APP)
-$(APP): $(APP).cpp
-	$(CXX) $(APP).cpp -o $(APP)
+all: helloworld.x
+helloworld.x: helloworld.cpp
+	$(CXX) helloworld.cpp -o helloworld.x
 
 clean:
-	rm -f *.o $(APP)
+	rm -f *.o helloworld.x
