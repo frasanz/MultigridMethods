@@ -28,9 +28,12 @@
  */
 #define SIZE 8
 
-#define HS  0  // Horizontal Side
-#define US  1  // Upper Side
-#define OS  2  // Oblicuous Side
+
+typedef struct{
+	double x;
+	double y;
+} point;
+
 
 typedef struct{
 	double hx;
@@ -39,58 +42,110 @@ typedef struct{
 	double vy;
 	double ox;
 	double oy;
-} point;
+	double x;
+	double y;
+} value;
+
+void print_values(value **);
 
 int main(){
 	int i,j;
-	point **u;
-	point **u_n;
-	point **f;
+	point **p;
+	value **u;
+	value **u_n;
+	value **f;
+
+	point a;
+	point b;
+	point c;
+
+	a.x=0.0;
+	a.y=0.0;
+	b.x=1.0;
+	b.y=0.0;
+	c.x=0.5;
+	c.y=1.0;
+
+
 
 	/* Section: lookup memory */
-	u     = (point **)malloc(SIZE*sizeof(point*));
-	u_n   = (point **)malloc(SIZE*sizeof(point*));
-	f     = (point **)malloc(SIZE*sizeof(point*));
+	p     = (point **)malloc(SIZE*sizeof(point*));
+	u     = (value **)malloc(SIZE*sizeof(value*));
+	u_n   = (value **)malloc(SIZE*sizeof(value*));
+	f     = (value **)malloc(SIZE*sizeof(value*));
 
 	for(i=0;i<SIZE;i++){
-			u[i]     = (point *)malloc((SIZE-i)*sizeof(point));
-			u_n[i]   = (point *)malloc((SIZE-i)*sizeof(point));
-			f[i]     = (point *)malloc((SIZE-i)*sizeof(point));
+			p[i]     = (point *)malloc((SIZE-i)*sizeof(point));
+			u[i]     = (value *)malloc((SIZE-i)*sizeof(value));
+			u_n[i]   = (value *)malloc((SIZE-i)*sizeof(value));
+			f[i]     = (value *)malloc((SIZE-i)*sizeof(value));
 	}
-	printf("We need about %f mb of memory\n", 1.0*sizeof(point)*SIZE*SIZE/2/1024/1024);
 
 
-	/* Initialization */
+	/* Initialize the values of points */
+	// For a triangle, we have tree points
+	// a=(a.x,a.y)     x(c)
+	// b=(b.x,b.y)
+	// c=(c.x,c.y)  x(a)    x(b)
 	for(i=0;i<SIZE;i++){
 		for(j=0;j<SIZE-i;j++){
+			p[i][j].x=a.x+((b.x-a.x)*j)/(SIZE-1)+((c.x-a.x)*i)/(SIZE-1);
+			p[i][j].y=a.y+((b.y-a.y)*j)/(SIZE-1)+((c.y-a.y)*i)/(SIZE-1);
 		}
 	}
 
+	//TODO: Add sizeof point
+	printf("We need about %f mb of memory\n", 1.0*sizeof(value)*SIZE*SIZE/2/1024/1024);
+
+	/* Initialize f */
 	for(i=0;i<SIZE;i++){
-		printf("New file-------------------------------------\n");
 		for(j=0;j<SIZE-i;j++){
-			printf("%x\n",&u[i][j]);
+			f[i][j].x=p[i][j].x;
+			f[i][j].y=-p[i][j].y;
 		}
 	}
-	/* Free memory 
-	for(i=0;i<NGRID;i++){
-		for(j=0;j<SIZE;j++){
-			printf("%d %d\n",i,j);
-			free(u[i][j]);
-			free(u_n[i][j]);
-			free(f[i][j]);
+
+	/* Initialize other functions */
+	for(i=0;i<SIZE;i++){
+		for(j=0;j<SIZE-i;j++){
+			u[i][j].x=rand();
+			u[i][j].y=rand();
+			u[i][j].hx=rand();
+			u[i][j].hy=rand();
+			u[i][j].vx=rand();
+			u[i][j].vy=rand();
+			u[i][j].ox=rand();
+			u[i][j].oy=rand();
+
 		}
+	}
+	print_values(u);
+
+
+
+
+
+	/* Free memory */
+	for(i=0;i<SIZE;i++){
 		free(u[i]);
 		free(u_n[i]);
-		free(f[i][j]);
+		free(f[i]);
+		free(p[i]);
 	}
 	free(u);
 	free(u_n);
 	free(f);
-	*/
-
+	free(p);
 
 	return 0;
+}
 
-
+void print_values(value **tri){
+	int i,j;
+	for(i=0;i<SIZE;i++){
+		for(j=0;j<SIZE-i;j++){
+			printf("%.2f %.2f\t",tri[i][j].x, tri[i][j].y);
+		}
+		printf("\n");
+	}
 }
