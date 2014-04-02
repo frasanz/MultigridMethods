@@ -16,3 +16,4 @@
 *.x
 /MultigridMethods/tests/jacobiRelaxation
 tests/jacobiRelaxation/jacobiRelaxation
+bin/
