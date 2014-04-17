@@ -10,7 +10,7 @@
 
 #define SIZE 2048
 #define BLOCK_SIZE 32
-#define NITER 1000
+#define NITER 10000
 
 float ratio(float*u, float ant, int iter){
 	float tmp=0.0;
@@ -30,19 +30,20 @@ float ratio(float*u, float ant, int iter){
 __global__ void jacobi(float *d_u_new, float *d_u, float *d_f, float h2){
 	int i = blockIdx.x*blockDim.x + threadIdx.x;
 	int j = blockIdx.y*blockDim.y + threadIdx.y;
-	d_u_new[i*SIZE+j]=0.25*(
-			h2*d_f[i    *SIZE+j     ]+
-			d_u[(i-1)*SIZE+j     ]+
-			d_u[(i+1)*SIZE+j     ]+
-			d_u[i    *SIZE+j-1   ]+
-			d_u[i    *SIZE+j+1   ]);
-
-
+	if(i>0 && j>0 && i<SIZE-1 && j<SIZE-1){
+		int posicion = i*SIZE+j;
+		d_u_new[i*SIZE+j]=0.25*(
+				h2*d_f[posicion]+
+				d_u[posicion-1]+
+				d_u[posicion+1]+
+				d_u[posicion-SIZE]+
+				d_u[posicion+SIZE]);
+	}
 }
 
 int main(){
-	float * h_u, *h_f;
-	float * d_u, *d_u_new, *d_f;
+	float * h_u, * h_f;
+	float * d_u, * d_u_new, * d_f;
 	float * tmp;
 	float ant = 1.0;
 	int i,j;
@@ -86,18 +87,15 @@ int main(){
 	float h2=h*h;
 
 	/* Call NITER times to the jacobi method */
-	for(i=0;i<NITER;i++)
-	{
+	for(i=0;i<NITER;i++){
 		jacobi<<<dimGrid,dimBlock>>>(d_u_new,d_u,d_f,h2);
-		cudaDeviceSynchronize;
-		if(i%100==0){
+		if(i%1000==0){
 			cudaMemcpy(h_u, d_u_new, size, cudaMemcpyDeviceToHost);
 			ant=ratio(h_u,ant,i);
 		}
 		tmp=d_u_new;
 		d_u_new=d_u;
 		d_u=tmp;
-
 	}
 
 	/* free memory */
