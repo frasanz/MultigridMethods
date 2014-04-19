@@ -17,3 +17,5 @@
 /MultigridMethods/tests/jacobiRelaxation
 tests/jacobiRelaxation/jacobiRelaxation
 bin/
+comparepythoncfortran/jacobiRelax/jacobirelaxc
+comparepythoncfortran/jacobiRelax/jacobirelaxf
