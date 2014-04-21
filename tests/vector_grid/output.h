@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  config.h
+ *       Filename:  output.h
  *
- *    Description:  :
+ *    Description:  
  *
  *        Version:  1.0
- *        Created:  21/04/14 23:03:29
+ *        Created:  21/04/14 23:10:38
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -16,15 +16,11 @@
  * =====================================================================================
  */
 
-#ifndef _CONFIG_H_
-#define _CONFIG_H_
+#ifndef _OUTPUT_H_
+#define _OUTPUT_H_
+#include "config.h"
 
-typedef struct{
-  double * u1;
-  double * u2;
-  double * u3;
-} Grid;
+void printPlain(Grid *g);
 
-#define SIZE 10
 #endif
 

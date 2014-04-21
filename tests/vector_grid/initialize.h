@@ -22,6 +22,7 @@
 #include "config.h"
 
 void randomInitialize(Grid *);
+void zeroInitialize(Grid *);
 
 #endif
 
