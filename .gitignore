@@ -19,3 +19,4 @@ tests/jacobiRelaxation/jacobiRelaxation
 bin/
 comparepythoncfortran/jacobiRelax/jacobirelaxc
 comparepythoncfortran/jacobiRelax/jacobirelaxf
+test/vector_grid/vector_grid
