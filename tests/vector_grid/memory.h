@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  vector_grid.h
+ *       Filename:  memory.h
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  21/04/14 22:26:30
+ *        Created:  21/04/14 22:29:54
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,6 +15,13 @@
  *
  * =====================================================================================
  */
-#ifndef _VECTOR_GRID_H_
-#define _VECTOR_GRID_H_
+
+#ifndef _MEMORY_H_
+#define _MEMORY_H_
+
+#include "config.h"
+
+void mallocGrid(Grid *g);
+void freeGrid(Grid *g);
+
 #endif

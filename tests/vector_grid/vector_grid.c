@@ -19,6 +19,9 @@
 #include <stdlib.h>
 #include <math.h>
 #include "vector_grid.h"
+#include "memory.h"
+#include "initialize.h"
+#include "config.h"
 
 int main(){
   /* Definitions */
@@ -28,9 +31,10 @@ int main(){
   int i;
 
   /* Malloc */
-  g1.u1 = (double*) malloc (SIZE*sizeof(double));
-  g1.u2 = (double*) malloc (SIZE*sizeof(double));
-  g1.u3 = (double*) malloc (SIZE*sizeof(double));
+  mallocGrid(&g1);
+
+  /* Initializacion */
+  randomInitialize(&g1);
 
   for(i=0; i<SIZE; i++){
     g1.u1[i]=rand();
@@ -40,10 +44,6 @@ int main(){
 
 
   /* Free */
-  free(g1.u1);
-  free(g1.u2);
-  free(g1.u3);
-
-
+  freeGrid(&g1);
   return 0;
 }

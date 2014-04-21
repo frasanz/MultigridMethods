@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  vector_grid.h
+ *       Filename:  initialize.h
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  21/04/14 22:26:30
+ *        Created:  21/04/14 22:48:20
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,6 +15,13 @@
  *
  * =====================================================================================
  */
-#ifndef _VECTOR_GRID_H_
-#define _VECTOR_GRID_H_
+
+#ifndef _INITIALIZE_H_
+#define _INITIALIZE_H_
+
+#include "config.h"
+
+void randomInitialize(Grid *);
+
 #endif
+

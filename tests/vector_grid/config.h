@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  vector_grid.h
+ *       Filename:  config.h
  *
- *    Description:  
+ *    Description:  :
  *
  *        Version:  1.0
- *        Created:  21/04/14 22:26:30
+ *        Created:  21/04/14 23:03:29
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,6 +15,19 @@
  *
  * =====================================================================================
  */
-#ifndef _VECTOR_GRID_H_
-#define _VECTOR_GRID_H_
+
+#ifndef _CONFIG_H_
+#define _CONFIG_H_
+
+typedef struct{
+  double * u1;
+  double * u2;
+  double * u3;
+} Grid;
+
+
+
+#define SIZE 2048
+
 #endif
+
