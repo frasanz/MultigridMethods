@@ -20,8 +20,13 @@
 #include "initialize.h"
 #include "memory.h"
 
-void randomInitialize(Grid *g){
+void initializeText(Grid *g, char * text){
+  g->name = text;
+}
+
+void randomInitialize(Grid *g, char * text){
   int i;
+  initializeText(g,text);
   for(i=0; i<SIZE; i++){
     g->u1[i]=random();
     g->u2[i]=random();
@@ -29,8 +34,9 @@ void randomInitialize(Grid *g){
   }
 }
 
-void zeroInitialize(Grid *g){
+void zeroInitialize(Grid *g, char * text){
   int i;
+  initializeText(g,text);
   for(i=0; i<SIZE; i++){
     g->u1[i]=0.0;
     g->u2[i]=0.0;

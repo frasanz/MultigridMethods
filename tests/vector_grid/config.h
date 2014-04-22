@@ -20,11 +20,13 @@
 #define _CONFIG_H_
 
 typedef struct{
+  char * name;
   double * u1;
   double * u2;
   double * u3;
 } Grid;
 
 #define SIZE 10
+#define SIZECHAR 256
 #endif
 

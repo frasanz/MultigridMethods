@@ -21,6 +21,8 @@
 
 void printPlain(Grid *g){
   int i;
+
+  printf("\n===%s===\n",g->name);
   printf("u1\n");
   for(i=0; i<SIZE; i++){
     printf("%f ", g->u1[i]);

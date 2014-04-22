@@ -34,9 +34,9 @@ int main(){
   mallocGrid(&g1);
 
   /* Initializacion */
-  randomInitialize(&g1);
+  randomInitialize(&g1, "g1 random");
   printPlain(&g1);
-  zeroInitialize(&g1);
+  zeroInitialize(&g1, "g1 zero");
   printPlain(&g1);
 
 

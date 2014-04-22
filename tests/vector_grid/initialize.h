@@ -21,8 +21,10 @@
 
 #include "config.h"
 
-void randomInitialize(Grid *);
-void zeroInitialize(Grid *);
+
+void initializeText(Grid *, char *);
+void randomInitialize(Grid *, char *);
+void zeroInitialize(Grid *, char *);
 
 #endif
 
