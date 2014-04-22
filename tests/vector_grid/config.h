@@ -21,12 +21,16 @@
 
 typedef struct{
   char * name;
+  int basevertex;
+  int totalvertex;
   double * u1;
   double * u2;
   double * u3;
 } Grid;
 
-#define SIZE 10
+#define SIZE 2
+#define BASEVERTEX (2^SIZE)+1
+#define TOTALVERTEX BASEVERTEX*(BASEVERTEX+1)/2 
 #define SIZECHAR 256
 #endif
 

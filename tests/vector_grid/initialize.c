@@ -27,7 +27,7 @@ void initializeText(Grid *g, char * text){
 void randomInitialize(Grid *g, char * text){
   int i;
   initializeText(g,text);
-  for(i=0; i<SIZE; i++){
+  for(i=0; i<g->totalvertex; i++){
     g->u1[i]=random();
     g->u2[i]=random();
     g->u3[i]=random();
@@ -37,7 +37,7 @@ void randomInitialize(Grid *g, char * text){
 void zeroInitialize(Grid *g, char * text){
   int i;
   initializeText(g,text);
-  for(i=0; i<SIZE; i++){
+  for(i=0; i<g->totalvertex; i++){
     g->u1[i]=0.0;
     g->u2[i]=0.0;
     g->u3[i]=0.0;

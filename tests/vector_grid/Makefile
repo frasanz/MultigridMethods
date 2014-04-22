@@ -1,5 +1,6 @@
 CC=gcc
 OPS=-g -Wall
+LIBS=-lm
 
 default: vector_grid
 
@@ -7,7 +8,7 @@ vector_grid: vector_grid.c memory.o initialize.o output.o
 	$(CC) $(OPS) output.o initialize.o memory.o vector_grid.c -o vector_grid
 
 memory.o: memory.c
-	$(CC) $(OPS) -c memory.c -o memory.o
+	$(CC) $(OPS) $(LIBS) -c memory.c -o memory.o
 
 initialize.o: initialize.c
 	$(CC) $(OPS) -c initialize.c -o initialize.o

@@ -17,12 +17,15 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "memory.h"
 
 void mallocGrid(Grid *g){
-  g->u1 = (double *) malloc (SIZE*sizeof(double));
-  g->u2 = (double *) malloc (SIZE*sizeof(double));
-  g->u3 = (double *) malloc (SIZE*sizeof(double));
+  g->basevertex = pow(2,SIZE)+1;
+  g->totalvertex= g->basevertex*(g->basevertex+1)/2;
+  g->u1 = (double *) malloc (g->totalvertex*sizeof(double));
+  g->u2 = (double *) malloc (g->totalvertex*sizeof(double));
+  g->u3 = (double *) malloc (g->totalvertex*sizeof(double));
 }
 
 void freeGrid(Grid *g){

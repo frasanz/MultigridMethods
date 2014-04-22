@@ -18,23 +18,24 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "output.h"
+#include "config.h"
 
 void printPlain(Grid *g){
   int i;
-
   printf("\n===%s===\n",g->name);
+  printf("\tbasevertex: %d , totalvertex: %d\n", g->basevertex, g->totalvertex);
   printf("u1\n");
-  for(i=0; i<SIZE; i++){
+  for(i=0; i<g->totalvertex; i++){
     printf("%f ", g->u1[i]);
   }
   printf("\n");
   printf("u2\n");
-  for(i=0; i<SIZE; i++){
+  for(i=0; i<g->totalvertex; i++){
     printf("%f ", g->u3[i]);
   }
   printf("\n");
   printf("u3\n");
-  for(i=0; i<SIZE; i++){
+  for(i=0; i<g->totalvertex; i++){
     printf("%f ", g->u3[i]);
   }
 }
