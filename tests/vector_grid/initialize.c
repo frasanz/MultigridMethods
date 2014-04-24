@@ -25,21 +25,38 @@ void initializeText(Grid *g, char * text){
 }
 
 void randomInitialize(Grid *g, char * text){
-  int i;
+  int i,j;
   initializeText(g,text);
-  for(i=0; i<g->totalvertex; i++){
-    g->u1[i]=random();
-    g->u2[i]=random();
-    g->u3[i]=random();
+  for(i=0; i<g->basevertex; i++){
+    for(j=0; j<g->basevertex-i; j++){
+      g->u1[i][j]=random();
+      g->u2[i][j]=random();
+      g->u3[i][j]=random();
+    }
   }
 }
 
 void zeroInitialize(Grid *g, char * text){
-  int i;
+  int i,j;
   initializeText(g,text);
-  for(i=0; i<g->totalvertex; i++){
-    g->u1[i]=0.0;
-    g->u2[i]=0.0;
-    g->u3[i]=0.0;
+  for(i=0; i<g->basevertex; i++){
+    for(j=0; j<g->basevertex-i; j++){
+      g->u1[i][j]=0.0;
+      g->u2[i][j]=0.0;
+      g->u3[i][j]=0.0;
+    }
   }
+}
+
+void fileInitialize(Grid *g, char *text){
+  int i,j;
+  initializeText(g,text);
+  for(i=0; i<g->basevertex; i++){
+    for(j=0; j<g->basevertex-i; j++){
+      g->u1[i][j]=1.0*i;
+      g->u2[i][j]=1.0*i;
+      g->u3[i][j]=1.0*i;
+    }
+  }
+
 }
