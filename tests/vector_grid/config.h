@@ -28,7 +28,7 @@ typedef struct{
   double ** u3;
 } Grid;
 
-#define SIZE 2
+#define SIZE 4
 #define SIZECHAR 256
 #endif
 

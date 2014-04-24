@@ -20,7 +20,9 @@
 #define _OUTPUT_H_
 #include "config.h"
 
-void printPlain(Grid *g);
+void printUp(Grid *g);
+void printDown(Grid *g);
+void printBigTriangleUp(double **, int);
 
 #endif
 

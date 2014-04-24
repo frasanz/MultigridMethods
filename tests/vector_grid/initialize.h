@@ -25,6 +25,9 @@
 void initializeText(Grid *, char *);
 void randomInitialize(Grid *, char *);
 void zeroInitialize(Grid *, char *);
+void fileInitialize(Grid *, char *);
+void boundaryInitialization(Grid *, double);
+
 
 #endif
 

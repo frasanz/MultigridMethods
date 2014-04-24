@@ -58,5 +58,14 @@ void fileInitialize(Grid *g, char *text){
       g->u3[i][j]=1.0*i;
     }
   }
+}
 
+void boundaryInitialization(Grid *g, double val){
+  int i;
+  /* Initialization of lower side (0,i) */
+  for(i=0; i<g->basevertex; i++){
+    g->u1[0][i]=(double)val;
+    g->u2[0][i]=(double)val;
+    g->u3[0][i]=(double)val;
+  }
 }

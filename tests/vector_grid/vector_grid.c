@@ -35,9 +35,16 @@ int main(){
 
   /* Initializacion */
   randomInitialize(&g1, "g1 random");
-  printPlain(&g1);
+  printUp(&g1);
+  printDown(&g1);
   zeroInitialize(&g1, "g1 zero");
-  printPlain(&g1);
+  printUp(&g1);
+  printDown(&g1);
+  fileInitialize(&g1, "g1 file");
+  printUp(&g1);
+  printDown(&g1);
+  boundaryInitialization(&g1, 9.0);
+  printUp(&g1);
 
 
   /* Free */
