@@ -23,6 +23,8 @@
 void printUp(Grid *g);
 void printDown(Grid *g);
 void printBigTriangleUp(double **, int);
-
+void printBigTriangleDown(double **, int);
+void printTriangleUp(double **, int);
+void printTriangleDown(double **, int);
 #endif
 
