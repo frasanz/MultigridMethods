@@ -23,7 +23,7 @@
 /* This function prints the triangle Up->Down */
 void printUp(Grid *g){
   printf("\n===%s===  printed Up->Down\n",g->name);
-  printf("\tbasevertex: %d , totalvertex: %d\n", g->basevertex, g->totalvertex);
+  printf("basevertex: %d , totalvertex: %d\n", g->basevertex, g->totalvertex);
   /* We can print all the triangle */
   if(SIZE < 4){
     printf("u1\n");
@@ -46,7 +46,7 @@ void printUp(Grid *g){
 /* This functions prints the triangle Down->UP */
 void printDown(Grid *g){
   printf("\n===%s=== printed Down->Up\n",g->name);
-  printf("\tbasevertex: %d , totalvertex: %d\n", g->basevertex, g->totalvertex);
+  printf("basevertex: %d , totalvertex: %d\n", g->basevertex, g->totalvertex);
   if(SIZE < 4){ /* We can print all the triangle */
     printf("u1\n");
     printTriangleDown(g->u1, g->basevertex);
@@ -127,25 +127,28 @@ void printBigTriangleDown(double **data, int baseSize){
   int i,j;
   int roundSize=4;
   /* First file */
-  printf("%1.3e %1.3e ", data[0][0], data[0][1]);
+  prettyprint(data[0][0]);
+  prettyprint(data[0][1]);
   for(i=0; i<roundSize-1; i++){
-    printf("......... ");
+    printPoints();
   }
-  printf("%1.3e %1.3e\n", data[0][baseSize-2], data[0][baseSize-1]);
+  prettyprint(data[0][baseSize-2]);
+  prettyprint(data[0][baseSize-1]);
+  printf("\n");
   /* Intermediate ... */ 
   for(i=0; i<=roundSize+1; i++){
-    printf("......... ");
+    printPoints();
   }
   printf("\n");
   /* Upper */
-  printf("%1.3e ", data[baseSize-(roundSize+1)][0]);
+  prettyprint(data[baseSize-(roundSize+1)][0]);
   for(i=0; i<roundSize-1; i++){
-    printf("......... ");
+    printPoints();
   }
   printf("%1.3e\n", data[baseSize-(roundSize+1)][baseSize-(roundSize+1)]);
   for(i=baseSize-roundSize; i<baseSize; i++){
     for(j=0; j<baseSize-i; j++){
-        printf("%1.3e ", data[i][j]);
+      prettyprint(data[i][j]);
     }
     printf("\n");
   }
