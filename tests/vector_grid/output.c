@@ -108,7 +108,7 @@ void printBigTriangleUp(double ** data, int baseSize){
   for(i=0; i<roundSize-1; i++){
     printPoints();
   }
-  prettyprint(data[baseSize-(roundSize+1)][baseSize-(roundSize+1)]);
+  prettyprint(data[baseSize-(roundSize+1)][roundSize]);
   printf("\n");
   for(i=0; i<=roundSize+1; i++){
      printPoints();
@@ -145,7 +145,7 @@ void printBigTriangleDown(double **data, int baseSize){
   for(i=0; i<roundSize-1; i++){
     printPoints();
   }
-  printf("%1.3e\n", data[baseSize-(roundSize+1)][baseSize-(roundSize+1)]);
+  printf("%1.3e\n", data[baseSize-(roundSize+1)][roundSize]);
   for(i=baseSize-roundSize; i<baseSize; i++){
     for(j=0; j<baseSize-i; j++){
       prettyprint(data[i][j]);

@@ -35,17 +35,20 @@ int main(){
 
   /* Initializacion */
   randomInitialize(&g1, "g1 random");
+  boundaryInitialization(&g1, -0.0);
   printUp(&g1);
   printDown(&g1);
-  zeroInitialize(&g1, "g1 zero");
+  columnInitialize(&g1, "g1 column");
   printUp(&g1);
   printDown(&g1);
-  fileInitialize(&g1, "g1 file");
+  fileInitialize(&g1, "f1 file");
   printUp(&g1);
   printDown(&g1);
-  boundaryInitialization(&g1, -9.0);
+  sumInitialize(&g1, "f1 sum");
   printUp(&g1);
   printDown(&g1);
+
+
 
   /* Free */
   freeGrid(&g1);

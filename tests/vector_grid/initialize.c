@@ -60,6 +60,32 @@ void fileInitialize(Grid *g, char *text){
   }
 }
 
+void columnInitialize(Grid *g, char *text){
+  int i,j;
+  initializeText(g,text);
+  for(i=0; i<g->basevertex; i++){
+    for(j=0; j<g->basevertex-i; j++){
+      g->u1[i][j]=1.0*j;
+      g->u2[i][j]=1.0*j;
+      g->u3[i][j]=1.0*j;
+    }
+  }
+}
+void sumInitialize(Grid *g, char *text){
+  int i,j;
+  initializeText(g,text);
+  for(i=0; i<g->basevertex; i++){
+    for(j=0; j<g->basevertex-i; j++){
+      g->u1[i][j]=1.0*i+j;
+      g->u2[i][j]=1.0*i+j;
+      g->u3[i][j]=1.0*i+j;
+    }
+  }
+}
+
+
+
+
 void boundaryInitialization(Grid *g, double val){
   int i;
   /* Initialization of lower side (0,i) */
@@ -67,5 +93,11 @@ void boundaryInitialization(Grid *g, double val){
     g->u1[0][i]=(double)val;
     g->u2[0][i]=(double)val;
     g->u3[0][i]=(double)val;
+    g->u1[i][0]=(double)val;
+    g->u2[i][0]=(double)val;
+    g->u3[i][0]=(double)val;
+    g->u1[i][g->basevertex-i-1]=(double)val;
+    g->u2[i][g->basevertex-i-1]=(double)val;
+    g->u3[i][g->basevertex-i-1]=(double)val;
   }
 }

@@ -26,6 +26,8 @@ void initializeText(Grid *, char *);
 void randomInitialize(Grid *, char *);
 void zeroInitialize(Grid *, char *);
 void fileInitialize(Grid *, char *);
+void columnInitialize(Grid *, char *);
+void sumInitialize(Grid *, char *);
 void boundaryInitialization(Grid *, double);
 
 

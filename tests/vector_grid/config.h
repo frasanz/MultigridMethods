@@ -29,6 +29,5 @@ typedef struct{
 } Grid;
 
 #define SIZE 4
-#define SIZECHAR 256
 #endif
 
