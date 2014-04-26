@@ -23,6 +23,7 @@
 #include "initialize.h"
 #include "config.h"
 #include "output.h"
+#include "norms.h"
 
 int main(){
   /* Definitions */
@@ -35,6 +36,7 @@ int main(){
 
   /* Initializacion */
   randomInitialize(&g1, "g1 random");
+  maxnormGrid(&g1);
   boundaryInitialization(&g1, -0.0);
   printUp(&g1);
   printDown(&g1);
@@ -47,6 +49,8 @@ int main(){
   sumInitialize(&g1, "f1 sum");
   printUp(&g1);
   printDown(&g1);
+  maxnormGrid(&g1);
+  
 
 
 

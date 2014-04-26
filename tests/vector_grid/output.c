@@ -64,6 +64,9 @@ void printDown(Grid *g){
     printBigTriangleDown(g->u3, g->basevertex);
   }
 }
+
+/* This allow to print numbers in 
+ * column independent of the "-" sign */
 void prettyprint(double value){
   if(value >= 0){
     printf(" %1.3e ", value);
@@ -72,6 +75,7 @@ void prettyprint(double value){
   }
 }
 
+/*  */
 void printTriangleUp(double ** data, int baseSize){
   int i,j;
   for(i=baseSize-1; i>=0; i--){
@@ -95,6 +99,7 @@ void printPoints(){
     printf(" ......... ");
 }
 
+/* This function prints a big triangle up, printing points when needed */
 void printBigTriangleUp(double ** data, int baseSize){
   int i,j;
   int roundSize=4;
@@ -123,6 +128,8 @@ void printBigTriangleUp(double ** data, int baseSize){
   prettyprint(data[0][baseSize-1]);
   printf("\n");
 }
+
+/* This function prints a triangle down, printing points when needed  */
 void printBigTriangleDown(double **data, int baseSize){
   int i,j;
   int roundSize=4;
