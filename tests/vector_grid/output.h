@@ -20,8 +20,8 @@
 #define _OUTPUT_H_
 #include "config.h"
 
-void printUp(Grid *g);
-void printDown(Grid *g);
+void printUp(Grid *g, int level);
+void printDown(Grid *g, int level);
 void printBigTriangleUp(double **, int);
 void printBigTriangleDown(double **, int);
 void printTriangleUp(double **, int);

@@ -21,7 +21,7 @@
 #include "norms.h"
 #include "config.h"
 
-void maxnormTriangle(double ** data, int baseSize, char * name){
+void maxnormTriangle(double ** data, int baseSize, char * name, int level){
   int i,j;
   double max;
   for(i=0; i<baseSize; i++){
@@ -30,12 +30,12 @@ void maxnormTriangle(double ** data, int baseSize, char * name){
         max=abs(data[i][j]);
     }
   }
-  printf("Max of %s: %1.3e\n", name, max);
+  printf("Max of %s(%d): %1.3e\n", name, level, max);
 }
 
-void maxnormGrid(Grid * g){
+void maxnormGrid(Grid * g, int level){
   printf("Calculating max norm of all the grid %s\n",g->name);
-  maxnormTriangle(g->u1, g->basevertex, "g->u1");
-  maxnormTriangle(g->u2, g->basevertex, "g->u2");
-  maxnormTriangle(g->u3, g->basevertex, "g->u3");
+  maxnormTriangle(g->u1[level], g->basevertex[level], "g->u1", level);
+  maxnormTriangle(g->u2[level], g->basevertex[level], "g->u2", level);
+  maxnormTriangle(g->u3[level], g->basevertex[level], "g->u3", level);
 }

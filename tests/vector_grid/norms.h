@@ -19,7 +19,7 @@
 #define _NORMS_H_
 #include "config.h"
 
-void maxnormTriangle(double **, int, char *);
-void maxnormGrid(Grid *g);
+void maxnormTriangle(double **, int, char *, int);
+void maxnormGrid(Grid *g, int level);
 
 #endif 

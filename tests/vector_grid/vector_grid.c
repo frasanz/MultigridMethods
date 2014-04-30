@@ -35,26 +35,9 @@ int main(){
   mallocGrid(&g1);
 
   /* Initializacion */
-  randomInitialize(&g1, "g1 random");
-  maxnormGrid(&g1);
-  boundaryInitialization(&g1, -0.0);
-  printUp(&g1);
-  printDown(&g1);
-  columnInitialize(&g1, "g1 column");
-  printUp(&g1);
-  printDown(&g1);
-  fileInitialize(&g1, "f1 file");
-  printUp(&g1);
-  printDown(&g1);
-  sumInitialize(&g1, "f1 sum");
-  printUp(&g1);
-  printDown(&g1);
-  maxnormGrid(&g1);
-  
-
-
-
-  /* Free */
+  randomInitialize(&g1, 3, "g1 random");
+  maxnormGrid(&g1,3);
+  printUp(&g1,3);
   freeGrid(&g1);
   return 0;
 }

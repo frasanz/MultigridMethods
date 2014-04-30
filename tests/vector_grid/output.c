@@ -21,47 +21,49 @@
 #include "config.h"
 
 /* This function prints the triangle Up->Down */
-void printUp(Grid *g){
+void printUp(Grid *g, int level){
   printf("\n===%s===  printed Up->Down\n",g->name);
-  printf("basevertex: %d , totalvertex: %d\n", g->basevertex, g->totalvertex);
+  printf("basevertex: %d , totalvertex: %d\n", g->basevertex[level], 
+    g->totalvertex[level]);
   /* We can print all the triangle */
-  if(SIZE < 4){
+  if(g->basevertex[level] < 10){
     printf("u1\n");
-    printTriangleUp(g->u1, g->basevertex);
+    printTriangleUp(g->u1[level], g->basevertex[level]);
     printf("u2\n");
-    printTriangleUp(g->u2, g->basevertex);
+    printTriangleUp(g->u2[level], g->basevertex[level]);
     printf("u3\n");
-    printTriangleUp(g->u3, g->basevertex);
+    printTriangleUp(g->u3[level], g->basevertex[level]);
 
   } else { /* Print a formatted version */
     printf("u1\n");
-    printBigTriangleUp(g->u1, g->basevertex);
+    printBigTriangleUp(g->u1[level], g->basevertex[level]);
     printf("u2\n");
-    printBigTriangleUp(g->u2, g->basevertex);
+    printBigTriangleUp(g->u2[level], g->basevertex[level]);
     printf("u3\n");
-    printBigTriangleUp(g->u3, g->basevertex);
+    printBigTriangleUp(g->u3[level], g->basevertex[level]);
   }
 }
 
 /* This functions prints the triangle Down->UP */
-void printDown(Grid *g){
+void printDown(Grid *g, int level){
   printf("\n===%s=== printed Down->Up\n",g->name);
-  printf("basevertex: %d , totalvertex: %d\n", g->basevertex, g->totalvertex);
-  if(SIZE < 4){ /* We can print all the triangle */
+  printf("basevertex: %d , totalvertex: %d\n", g->basevertex[level], 
+    g->totalvertex[level]);
+  if(g->basevertex[level] < 10){ /* We can print all the triangle */
     printf("u1\n");
-    printTriangleDown(g->u1, g->basevertex);
+    printTriangleDown(g->u1[level], g->basevertex[level]);
     printf("u2\n");
-    printTriangleDown(g->u2, g->basevertex);
+    printTriangleDown(g->u2[level], g->basevertex[level]);
     printf("u3\n");
-    printTriangleDown(g->u3, g->basevertex);
+    printTriangleDown(g->u3[level], g->basevertex[level]);
 
   } else { /* Print a formatted version */
     printf("u1\n");
-    printBigTriangleDown(g->u1, g->basevertex);
+    printBigTriangleDown(g->u1[level], g->basevertex[level]);
     printf("u2\n");
-    printBigTriangleDown(g->u2, g->basevertex);
+    printBigTriangleDown(g->u2[level], g->basevertex[level]);
     printf("u3\n");
-    printBigTriangleDown(g->u3, g->basevertex);
+    printBigTriangleDown(g->u3[level], g->basevertex[level]);
   }
 }
 

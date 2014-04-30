@@ -23,12 +23,12 @@
 
 
 void initializeText(Grid *, char *);
-void randomInitialize(Grid *, char *);
-void zeroInitialize(Grid *, char *);
-void fileInitialize(Grid *, char *);
-void columnInitialize(Grid *, char *);
-void sumInitialize(Grid *, char *);
-void boundaryInitialization(Grid *, double);
+void randomInitialize(Grid *, int, char *);
+void zeroInitialize(Grid *, int, char *);
+void fileInitialize(Grid *, int, char *);
+void columnInitialize(Grid *, int, char *);
+void sumInitialize(Grid *, int, char *);
+void boundaryInitialization(Grid *, int, double);
 
 
 #endif
