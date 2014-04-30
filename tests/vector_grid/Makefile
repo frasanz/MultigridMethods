@@ -5,7 +5,7 @@ LIBS=-lm
 default: vector_grid
 
 vector_grid: vector_grid.c memory.o initialize.o output.o norms.o
-	$(CC) $(OPS) $(LIBS) norms.o output.o initialize.o memory.o vector_grid.c -o vector_grid
+	$(CC) $(OPS) norms.o output.o initialize.o memory.o $(LIBS) vector_grid.c -o vector_grid
 
 memory.o: memory.c
 	$(CC) $(OPS) $(LIBS) -c memory.c -o memory.o

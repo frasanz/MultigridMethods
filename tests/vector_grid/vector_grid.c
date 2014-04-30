@@ -27,17 +27,31 @@
 
 int main(){
   /* Definitions */
-  Grid g1;
+  Grid u;
+  Grid v;
+  Grid f;
 
   /* Auxiliary definitions */
+  int i;
 
   /* Malloc */
-  mallocGrid(&g1);
+  mallocGrid(&u);
+  mallocGrid(&v);
+  mallocGrid(&f);
 
-  /* Initializacion */
-  randomInitialize(&g1, 3, "g1 random");
-  maxnormGrid(&g1,3);
-  printUp(&g1,3);
-  freeGrid(&g1);
+  /* Initialize in the finest grid */
+  randomInitialize(&u, SIZE-1, "u random");
+  boundaryInitialization(&u, SIZE-1, 0.0);
+
+  for(i=0; i<SIZE; i++){
+    zeroInitialize(&v, i, "v zero");
+    zeroInitialize(&f, i, "f zero"); 
+  }
+
+
+  /* Free grids */
+  freeGrid(&u);
+  freeGrid(&v);
+  freeGrid(&f);
   return 0;
 }

@@ -28,6 +28,6 @@ typedef struct{
   double *** u3;
 } Grid;
 
-#define SIZE 4
+#define SIZE 3
 #endif
 
