@@ -21,49 +21,54 @@
 #include "config.h"
 
 /* This function prints the triangle Up->Down */
-void printUp(Grid *g){
+void printUp(Grid *g, int level){
   printf("\n===%s===  printed Up->Down\n",g->name);
-  printf("basevertex: %d , totalvertex: %d\n", g->basevertex, g->totalvertex);
+  printf("basevertex: %d , totalvertex: %d\n", g->basevertex[level], 
+    g->totalvertex[level]);
   /* We can print all the triangle */
-  if(SIZE < 4){
+  if(g->basevertex[level] < 10){
     printf("u1\n");
-    printTriangleUp(g->u1, g->basevertex);
+    printTriangleUp(g->u1[level], g->basevertex[level]);
     printf("u2\n");
-    printTriangleUp(g->u2, g->basevertex);
+    printTriangleUp(g->u2[level], g->basevertex[level]);
     printf("u3\n");
-    printTriangleUp(g->u3, g->basevertex);
+    printTriangleUp(g->u3[level], g->basevertex[level]);
 
   } else { /* Print a formatted version */
     printf("u1\n");
-    printBigTriangleUp(g->u1, g->basevertex);
+    printBigTriangleUp(g->u1[level], g->basevertex[level]);
     printf("u2\n");
-    printBigTriangleUp(g->u2, g->basevertex);
+    printBigTriangleUp(g->u2[level], g->basevertex[level]);
     printf("u3\n");
-    printBigTriangleUp(g->u3, g->basevertex);
+    printBigTriangleUp(g->u3[level], g->basevertex[level]);
   }
 }
 
 /* This functions prints the triangle Down->UP */
-void printDown(Grid *g){
+void printDown(Grid *g, int level){
   printf("\n===%s=== printed Down->Up\n",g->name);
-  printf("basevertex: %d , totalvertex: %d\n", g->basevertex, g->totalvertex);
-  if(SIZE < 4){ /* We can print all the triangle */
+  printf("basevertex: %d , totalvertex: %d\n", g->basevertex[level], 
+    g->totalvertex[level]);
+  if(g->basevertex[level] < 10){ /* We can print all the triangle */
     printf("u1\n");
-    printTriangleDown(g->u1, g->basevertex);
+    printTriangleDown(g->u1[level], g->basevertex[level]);
     printf("u2\n");
-    printTriangleDown(g->u2, g->basevertex);
+    printTriangleDown(g->u2[level], g->basevertex[level]);
     printf("u3\n");
-    printTriangleDown(g->u3, g->basevertex);
+    printTriangleDown(g->u3[level], g->basevertex[level]);
 
   } else { /* Print a formatted version */
     printf("u1\n");
-    printBigTriangleDown(g->u1, g->basevertex);
+    printBigTriangleDown(g->u1[level], g->basevertex[level]);
     printf("u2\n");
-    printBigTriangleDown(g->u2, g->basevertex);
+    printBigTriangleDown(g->u2[level], g->basevertex[level]);
     printf("u3\n");
-    printBigTriangleDown(g->u3, g->basevertex);
+    printBigTriangleDown(g->u3[level], g->basevertex[level]);
   }
 }
+
+/* This allow to print numbers in 
+ * column independent of the "-" sign */
 void prettyprint(double value){
   if(value >= 0){
     printf(" %1.3e ", value);
@@ -72,6 +77,7 @@ void prettyprint(double value){
   }
 }
 
+/*  */
 void printTriangleUp(double ** data, int baseSize){
   int i,j;
   for(i=baseSize-1; i>=0; i--){
@@ -95,6 +101,7 @@ void printPoints(){
     printf(" ......... ");
 }
 
+/* This function prints a big triangle up, printing points when needed */
 void printBigTriangleUp(double ** data, int baseSize){
   int i,j;
   int roundSize=4;
@@ -108,7 +115,7 @@ void printBigTriangleUp(double ** data, int baseSize){
   for(i=0; i<roundSize-1; i++){
     printPoints();
   }
-  prettyprint(data[baseSize-(roundSize+1)][baseSize-(roundSize+1)]);
+  prettyprint(data[baseSize-(roundSize+1)][roundSize]);
   printf("\n");
   for(i=0; i<=roundSize+1; i++){
      printPoints();
@@ -123,6 +130,8 @@ void printBigTriangleUp(double ** data, int baseSize){
   prettyprint(data[0][baseSize-1]);
   printf("\n");
 }
+
+/* This function prints a triangle down, printing points when needed  */
 void printBigTriangleDown(double **data, int baseSize){
   int i,j;
   int roundSize=4;
@@ -145,7 +154,7 @@ void printBigTriangleDown(double **data, int baseSize){
   for(i=0; i<roundSize-1; i++){
     printPoints();
   }
-  printf("%1.3e\n", data[baseSize-(roundSize+1)][baseSize-(roundSize+1)]);
+  printf("%1.3e\n", data[baseSize-(roundSize+1)][roundSize]);
   for(i=baseSize-roundSize; i<baseSize; i++){
     for(j=0; j<baseSize-i; j++){
       prettyprint(data[i][j]);

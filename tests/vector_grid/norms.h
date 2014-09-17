@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  output.h
+ *       Filename:  norms.h
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  21/04/14 23:10:38
+ *        Created:  26/04/14 16:49:34
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,16 +15,11 @@
  *
  * =====================================================================================
  */
-
-#ifndef _OUTPUT_H_
-#define _OUTPUT_H_
+#ifndef _NORMS_H_
+#define _NORMS_H_
 #include "config.h"
 
-void printUp(Grid *g, int level);
-void printDown(Grid *g, int level);
-void printBigTriangleUp(double **, int);
-void printBigTriangleDown(double **, int);
-void printTriangleUp(double **, int);
-void printTriangleDown(double **, int);
-#endif
+void maxnormTriangle(double **, int, char *, int);
+void maxnormGrid(Grid *g, int level);
 
+#endif 
